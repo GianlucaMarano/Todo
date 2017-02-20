@@ -1,4 +1,4 @@
-package com.marano.gianluca.todo;
+package com.marano.gianluca.todo.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 
