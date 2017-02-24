@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:background="@color/cardview_light_background"
+        android:elevation="@dimen/cardview_default_elevation"
+        app:cardCornerRadius="@dimen/cardview_default_radius">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/root_padding">
+
+            <CheckBox
+                android:id="@+id/add_seciale_cb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="5dp"
+                android:text="Speciale" />
+
+            <EditText
+                android:id="@+id/add_titolo_et"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/add_seciale_cb"
+                android:hint="@string/title_add"
+                android:maxLength="30"
+                android:theme="@style/EditText" />
+
+            <EditText
+                android:id="@+id/add_text_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/add_titolo_et"
+                android:gravity="top"
+                android:hint="@string/text_add"
+                android:maxLines="5"
+                android:theme="@style/EditText" />
+
+
+            <ImageView
+                android:id="@+id/add_calendar_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/add_text_et"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/calendar" />
+
+            <TextView
+                android:id="@+id/add_data_scadenza_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/add_calendar_img"
+                android:layout_below="@id/add_text_et"
+                android:layout_toEndOf="@id/add_calendar_img"
+                android:text="Data Scadenza"
+                android:textSize="@dimen/titolo_nota" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

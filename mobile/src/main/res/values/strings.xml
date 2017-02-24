@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Todo</string>
+    <string name="titolo_main">Lista cose da fare</string>
+    <string name="toolbar_title_add">Aggiungi una nota</string>
+    <string name="confirm">conferma</string>
+    <string name="title_add">Titolo</string>
+    <string name="text_add">Scrivi una nota...</string>
 </resources>

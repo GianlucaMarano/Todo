@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_layout_rl"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:paddingLeft="@dimen/root_padding"
+    android:paddingRight="@dimen/root_padding"
+
+    android:paddingTop="@dimen/root_padding">
+
+    <ImageView
+        android:id="@+id/item_star"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/star" />
+
+    <TextView
+        android:id="@+id/item_titolo_nota_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:layout_toEndOf="@id/item_star"
+        android:ellipsize="end"
+        android:padding="5dp"
+        android:text="titolo"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="@dimen/titolo_nota"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/item_testo_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/item_titolo_nota_tv"
+        android:layout_below="@id/item_titolo_nota_tv"
+        android:ellipsize="end"
+        android:lines="1"
+        android:maxLines="1"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:text="Testo" />
+
+    <TextView
+        android:id="@+id/item_data_ultima_modifica_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/item_titolo_nota_tv"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:text="gg/mm/aaaa" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignStart="@id/item_titolo_nota_tv"
+        android:layout_below="@id/item_testo_tv"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="#20000000" />
+
+</RelativeLayout>
