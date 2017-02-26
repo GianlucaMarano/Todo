@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true">
 
     <ImageView
         android:id="@+id/item_testo_immagine_img"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginTop="5dp"
         android:padding="10dp"
         android:scaleType="fitCenter"
         android:src="@drawable/format_text" />
@@ -18,10 +21,13 @@
         android:layout_alignBaseline="@id/item_testo_immagine_img"
         android:layout_marginBottom="5dp"
         android:layout_toEndOf="@id/item_testo_immagine_img"
-        android:padding="10dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="15dp"
+        android:paddingTop="15dp"
         android:text="testo"
         android:textColor="@android:color/black"
-        android:textSize="@dimen/titolo_nota" />
+        android:textSize="@dimen/testo" />
 
     <View
         android:id="@+id/item_testo_divider_v"

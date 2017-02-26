@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.marano.gianluca.todo.model.Nota;
 import com.marano.gianluca.todo.model.Stato;
@@ -79,6 +80,7 @@ public class Databasehandler extends SQLiteOpenHelper {
         values.put(KEY_DATA_SCADENZA, nota.getDataScadenza());
         values.put(KEY_STATO, nota.getStato().toString());
         values.put(KEY_SPECIALE, nota.isSpeciale());
+        Log.d("speciale", String.valueOf(nota.isSpeciale()));
         // Inserting Row
         long id = db.insert(TABLE_NotaS, null, values);
         nota.setId((int) id);
@@ -95,9 +97,9 @@ public class Databasehandler extends SQLiteOpenHelper {
 
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
-            boolean speciale = false;
+            boolean speciale;
             do {
-                if (cursor.getString(7).equals("1")) speciale = true;
+                speciale = cursor.getString(7).equals("1");
                 Nota Nota = new Nota(Integer.parseInt(cursor.getString(0)), cursor.getString(1),
                         cursor.getString(2), cursor.getString(3),
                         cursor.getString(4), cursor.getString(5),
@@ -110,6 +112,32 @@ public class Databasehandler extends SQLiteOpenHelper {
         // return Notas list
         return NotasList;
     }
+
+    public ArrayList<Nota> getSpecialNotas() {
+        ArrayList<Nota> NotasList = new ArrayList<>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_NotaS + " where " + KEY_SPECIALE + " = 1";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            boolean speciale;
+            do {
+                speciale = cursor.getString(7).equals("1");
+                Nota Nota = new Nota(Integer.parseInt(cursor.getString(0)), cursor.getString(1),
+                        cursor.getString(2), cursor.getString(3),
+                        cursor.getString(4), cursor.getString(5),
+                        Stato.getValue(cursor.getString(6)), speciale);
+                // Adding Nota to list
+                NotasList.add(Nota);
+            } while (cursor.moveToNext());
+        }
+
+        // return Notas list
+        return NotasList;
+    }
+
 
     public Nota getNota(int id) {
         boolean speciale = false;

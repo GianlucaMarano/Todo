@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,7 +14,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.marano.gianluca.todo.R;
 import com.marano.gianluca.todo.dialog.DatePickerDialog;
@@ -45,11 +45,12 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setActionBar(toolbar);
-        getSupportActionBar().setTitle(R.string.toolbar_title_add);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_add);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Aggiungi una nota");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.close);
-        getSupportActionBar().setHomeButtonEnabled(true);
+      /*  getSupportActionBar().setHomeButtonEnabled(true);*/
         titleEt = (EditText) findViewById(R.id.add_titolo_et);
         textEt = (EditText) findViewById(R.id.add_text_et);
         dataScadenzaTv = (TextView) findViewById(R.id.add_data_scadenza_tv);

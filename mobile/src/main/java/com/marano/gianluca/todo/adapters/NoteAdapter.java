@@ -26,7 +26,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NotaVH> {
 
     private List<Nota> note;
     private int posizione;
-
+    private int request;
     public NoteAdapter(List<Nota> note) {
         this.note = note;
     }
@@ -34,6 +34,14 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NotaVH> {
     public void addNota(Nota nota) {
         note.add(nota);
         notifyItemInserted(getItemCount() - 1);
+    }
+
+    public int getRequest() {
+        return request;
+    }
+
+    public void setRequest(int request) {
+        this.request = request;
     }
 
     public void removeNota(int position) {
@@ -47,6 +55,15 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NotaVH> {
 
     public Nota getNota(int posizione) {
         return note.get(posizione);
+    }
+
+    public int getPosizione(Nota nota) {
+        for (Nota n : note) {
+            if (n.getTitolo().equals(nota.getTitolo()) & n.getCorpo().equals(nota.getCorpo())) {
+                return note.indexOf(n);
+            }
+        }
+        return -1;
     }
 
     public int getPosizione() {
@@ -99,6 +116,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NotaVH> {
         public void onClick(View v) {
             Intent i = new Intent(v.getContext(), ViewActivity.class);
             i.putExtra("id", getAdapterPosition());
+            i.putExtra(MainActivity.REQUEST, getRequest());
             v.getContext().startActivity(i);
 
 

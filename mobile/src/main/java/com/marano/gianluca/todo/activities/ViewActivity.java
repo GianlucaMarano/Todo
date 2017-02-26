@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toolbar;
+import android.support.v7.widget.Toolbar;
 
 import com.marano.gianluca.todo.R;
 import com.marano.gianluca.todo.adapters.ViewAdapter;
@@ -21,13 +21,16 @@ public class ViewActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
     ViewAdapter viewAdapter;
+    Nota nota;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setActionBar(toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_left);
         linearLayoutManager = new LinearLayoutManager(this) {
             @Override
             public boolean canScrollVertically() {
@@ -35,8 +38,13 @@ public class ViewActivity extends AppCompatActivity {
             }
         };
         int id = getIntent().getExtras().getInt("id");
+
         Databasehandler db = new Databasehandler(this);
-        Nota nota = db.getAllNotas().get(id);
+        if (getIntent().getExtras().getInt(MainActivity.REQUEST) == MainActivity.ELENCO_SEMPLICE) {
+            nota = db.getAllNotas().get(id);
+        } else {
+            nota = db.getSpecialNotas().get(id);
+        }
 
         getSupportActionBar().setTitle(nota.getTitolo());
         viewAdapter = new ViewAdapter(nota);
